@@ -1,0 +1,68 @@
+------------- HTTP METHODS (Hyper text tranfer protocol) -----------------------------------
+
+# What are HTTP Header?
+
+* Metadata -> Key-value sent along with req & res
+
+* Caching , Authentication , manage State
+  x-prefix -> 2012(x-deprecated)
+
+* Req Header - From Client
+* Res Header - From Server
+* Representation Header - encoding / compression
+* Payload Header - Data
+
+# Most Common Headers
+
+* Accept : application/json
+* User-Agent
+* Authorization
+* Content-type
+* Cookie
+* Cache-control
+
+#CORS
+
+* Access-Control-Allow-Origin
+* Access-Control-Allow-Credentials
+* Access-Control-Allow-METHODS
+
+# Security
+
+* Cross-Origin-Embedder-Policy
+* Cross-Origin-Opener-Policy
+* Content-Security-Policy
+* X-XSS-Protection
+
+
+# HTTP METHODS
+ Basic set of operations that can be used to interact with Server
+
+* GET - Retrieve a resource
+* HEAD - No Message body (Response headers only)
+* OPTIONS - What operations are available
+* TRACE - Loopback test (get some data)
+* DELETE - Remove a resource
+* PUT - Replace a resource
+* POST - Intract with resource (Mosly Add)
+* PATCH - Change part of a resource
+
+ ______________________
+|                      | 
+| # HTTP STATUS CODE   |
+|                      |
+| * 1xx - Information  |
+| * 2xx - Success      |
+| * 3xx - Redirection  |
+| * 4xx - Client Error |
+| * 500 - Server Error |
+|______________________|
+
+100 - Continue                 400 - Bad Request
+102 - Processing               401 - Unauthorized
+200 - OK                       402 - Payment Required
+201 - Created                  404 - Not Found
+202 - Accepted                 500 - Internal Server Error
+307 - Temporary Redirection    504 - Gateway timeout
+308 - Permanent Redirection
+
