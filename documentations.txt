@@ -66,3 +66,15 @@
 307 - Temporary Redirection    504 - Gateway timeout
 308 - Permanent Redirection
 
+# Register Users Steps
+
+1. Register Form Open Krwana h 
+2. User se details fill krwani h form pr (Frontend se)
+3. Validation Check - Not Empty
+4. Check User Already Exists Or Not (By Email Or Username)  
+5. Check for images , check for avatar
+6. Upload image to cloudinary, avatar
+7. Create user object - Create entry in Db
+8. Remove password and refresh token field from Response
+9. Check for user creation successfully or not
+10. return Response
