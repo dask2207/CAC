@@ -82,11 +82,14 @@
 
 # Access Token & Refresh Token
 
+* Use (User ko bar bar apna email or password na dena pade)
+
 * Gmail mai dono token use hote h , 
   Dono token exactly same hota h, unko generate krne k tarika bhi same hota h,
   sirf or sirf fark aata h ki expire kb hota h
 
 * Access Token usually short lived hote headers ( Example -  Authenticated & login (file access) - 15 min )
+
 * Refresh Token Long Lived hote h  ( Db mai bhi save hota h or user ko bhi diya jata h & validate toh access  
   token se he krte h or kehte h bar bar pssword dalne ki jarurt nahi h apke pass yeh refresh token h toh end point hit krdo waha se agr dono k refresh token same h toh hum man jaenge or db apko new access token de dega  )
 
