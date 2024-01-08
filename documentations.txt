@@ -104,3 +104,87 @@
 * create access token & refresh token.
 * Send cookies 
 * User successfully Logged In.
+
+
+# subscription Schema
+
+   -------------       -------------
+  | subscriber  |     | Channel     |
+   -------------       -------------
+
+   User -> a, b, c, d 
+   Channel -> CAC, HCC, FCC
+
+# documents
+
+   ----------------       ----------------
+  | subscriber -> d|     | subscriber -> a|
+  | Channel -> CAC |     | Channel -> HCC |
+   ----------------       ----------------
+
+   ----------------       ----------------
+  | subscriber -> b|     | subscriber -> b|
+  | Channel -> CAC |     | Channel -> HCC |
+   ----------------       ----------------
+
+   ----------------       ----------------
+  | subscriber -> c|     | subscriber -> c|
+  | Channel -> CAC |     | Channel -> HCC |
+   ----------------       ----------------
+
+
+
+# How to count channel subscribers (Hume kitno ne subscribe kiya h)
+
+* Hum user k document mai jo channel hoga usko count karna h , then jis jis me document mai channel hoga us document ko count karenge.
+
+# Humne kitno ko subscribe kiya h uska count kese karenge
+
+* Hum document mai dekhenge ki subscribe value kaha kaha h uske channel k document ko count kr lenge
+
+
+# Mongodb Aggregation Pipelines
+
+* Yeh ek stages hoti h, 1st stage 2nd stage 3rd stage.
+* Apne jo bhi ek stage pr filtering (condition) laga de ki mujhe 50 documents set do toh next stage pr jaenge toh next stage ki liye 50 documents he data set h.
+
+
+* Aggregation Pipeline Example
+
+db.orders.aggregate( [
+   // Stage 1: Filter pizza order documents by pizza size
+   {
+      $match: { size: "medium" }
+   },
+   // Stage 2: Group remaining documents by pizza name and calculate total quantity
+   {
+      $group: { _id: "$name", totalQuantity: { $sum: "$quantity" } }
+   }
+] )
+
+# document ko join krne k liye mongodb aggregate mai 
+
+      [
+         {
+            $lookup: {
+               from : collection,        //"author"
+               localField: field,        // "author_id"
+               foreignField: field,      // "_id"
+               as: result                // "author_details"
+            }
+         },
+         {
+            // addField new fields add kr sakta h
+            $addFields: {
+               author_details: {
+                  $first: "$author_details"        //2nd method - $aarElemAt: ["$author_details", 0]
+               }
+            }
+         }
+      ]
+
+* req.user._id  // mongodb id k string deta h, jab hum mongoose mai use krte hain toh mongoose khudse  he    ObjectId mai convert kr deta h
+
+* aggregate pipleline mai chize direct jati h, toh mongoose wala kam nhi hota isliye hume string ko ObjectId mai convert krna padta hain
+ 
+ example : $match: { _id: new mongoose.types.ObjectId(req.user._id)}
