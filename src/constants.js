@@ -1,1 +1,1 @@
-export const DB_NAME = "CAC"
+export const DB_NAME = "mp4tube";
